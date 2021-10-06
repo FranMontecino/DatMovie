@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <title>Buscador/Peliculas</title>
+</head>
+<body>
+    <header>
+        <div class="contenedorGral">
+            <h2 class="logo">Great-Cinema <i class="fas fa-film"></i></h2>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a class="active" href="peliculas.html">Peliculas</a>
+                <button role="button" class="btnLogin loginAccion">Iniciar Sesión</button>
+                <a href="" id="close">Cerrar Sesión</a> 
+                <p id="usernav"></p>
+                              
+            </nav>  
+            <button class="dlbtn" id="dlbtn">
+                <span><i class="fas fa-sun"></i></span>
+                <span><i class="fas fa-moon"></i></span>
+            </button>          
+        </div>         
+    </header>
+    <div class="loginModalContainer">
+        <div class="loginModal loginModalCerrar">
+            <p class="loginCerrar"></p>
+            <form class="formularioPrincipal" id="form">
+                <div class="formulario">
+                    <p class="tituloForm">Iniciar Sesión</p>
+                    <div class="grupo">
+                        <input type="text" id="username" required><span class="barra"></span>
+                        <label>Nombre de Usuario</label>
+                    </div>
+                    <div class="grupo">
+                        <input type="password" id="password" required><span class="barra"></span>
+                        <label>Contraseña</label>
+                    </div>
+                    <button class="botonForm" type="submit">Iniciar Sesión</button>
+                    </div>
+                </form>                    
+            </div>
+        </div>
+    </div>
+    <div class="movieApp">
+        <p class="tituloMovieSearch">Búsqueda de Peliculas</p>
+        <form id="formBuscador" class="cajaSearch">
+            <div>
+                <div>
+                    <input  class="search" placeholder="Ingrese una Pelicula..." name="search" id="search" type="text">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="tags"></div>
+<div id="myNav" class="overlay">
+
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  
+    <div class="overlay-content" id="overlay-content"></div>
+    
+    <a href="javascript:void(0)" class="arrow left-arrow" id="left-arrow">&#8656;</a> 
+    
+    <a href="javascript:void(0)" class="arrow right-arrow" id="right-arrow" >&#8658;</a>
+
+</div>
+<main id="main"></main>
+<div class="pagination">
+    <div class="page" id="prev">Anterior</div>
+    <div class="current" id="current">1</div>
+    <div class="page" id="next">Siguiente</div>
+</div>
+
+
+
+    
+    <script  src="https://code.jquery.com/jquery-3.6.0.min.js"  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+    <script src="js/movie.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+</body>
+</html>

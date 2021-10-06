@@ -1,0 +1,710 @@
+:root {
+    --amarillo: #FFC300;
+    --background: #141414; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    transition: .3s ease all;
+    background-color: var(--background);
+    font-family: 'Roboto', sans-serif;
+}
+
+body.dark {
+    transition: .3s ease all;
+    background-color: #EEEEEE;
+
+}
+
+.contenedorGral {
+    width: 90%;
+    margin: auto;
+}
+
+header {
+    padding: 25px 0px;
+    border-bottom: 1px solid gray;
+}
+
+header .contenedorGral {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-family: "Bebas Neue", cursive;
+    font-weight: normal;
+    color: var(--amarillo);
+    font-size: 35px;
+}
+
+body.dark header .logo {
+    color: #292929;
+}
+
+header nav a {
+    color: #AAA;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+body.dark nav a {
+    color:rgb(61, 61, 61);
+}
+
+header nav a:hover,
+header nav a.active {
+    color: #FFF
+}
+
+body.dark header nav a:hover,
+header nav a.active {
+    color: rgb(131, 131, 131);
+}
+
+.btnLogin {
+    background: none;
+    color: #AAA;
+    margin-right: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;    
+}
+
+body.dark .btnLogin {
+    color: rgb(61, 61, 61);
+}
+
+.btnLogin:hover {
+    color: #FFF;
+}
+
+body.dark .btnLogin:hover{
+    color: rgb(190, 190, 190);
+}
+
+.userName {
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    color: #AAA;
+}
+
+.dlbtn {
+    background: #343D5B;
+    border-radius: 1000px;
+    border: none;
+    position: none;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+}
+
+.dlbtn::after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background: #F1F1F1;
+    top: 0;
+    left: 0;
+    right: unset;
+    border-radius: 100px;
+    transition: .3s ease all;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, .2);
+}
+
+.dlbtn.active {
+    background: orange;
+    color: #000;
+}
+
+.dlbtn.active::after{
+    right: 0;
+    left: unset;
+}
+
+.dlbtn span {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    background: none;
+    color: #fff;
+}
+
+
+
+/*----------Banner----------*/
+
+.movieBanner {
+    font-size: 16px;
+    min-height: 40.62em;
+    color: #FFF;
+    background: linear-gradient(rgba(0, 0, 0, .50) 0%, rgba(0,0,0,.50) 100%), url(../media/interstellar.jpg);
+    background-size: cover;
+    margin-bottom: 3.12em;
+    display: flex;
+    align-items: flex-end;
+}
+
+.movieBanner .contenedorGral {
+    margin: 0 auto;
+    margin-bottom: 6.25em;
+}
+
+.movieBanner .movieTitle {
+    font-weight: 700;
+    font-size: 3.12em;
+    margin-bottom: 0.4em;
+}
+
+.movieBanner .descripcion {
+    font-weight: normal;
+    font-size: 1em;
+    line-height: 1.75em;
+    max-width: 50%;
+    margin-bottom: 1.25em;
+}
+
+
+
+.movieBanner .btnInfo {
+    background: rgba(0,0,0, 0.5);
+    border: none;
+    border-radius: 0.31em;
+    padding: 0.93em 1.87em;
+    color: #fff;
+    margin-right: 1.25em;
+    cursor: pointer;
+    transition: .3s ease all;
+    font-size: 1.12em; 
+}
+
+
+
+.movieBanner .btnInfo i {
+    margin-right: 1.25em;
+}
+
+
+
+.movieBanner .btnInfo:hover {
+    background: #fff;
+    color: #000;
+}
+
+.subtituloMv {
+    font-weight: 700;
+    margin-left: 15px;
+    margin-bottom: 40px;
+    font-size: 25px;    
+    color: white;
+}
+
+body.dark .subtituloMv {
+    color: rgb(61, 61, 61);
+}
+
+.tituloMv {
+    font-weight: 300;
+    margin-bottom: 1.25em;
+}
+
+body.dark .tituloMv {
+    color: rgb(32, 32, 32);
+}
+
+/*-----------Modal----------*/
+
+.cerrar {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: var(--amarillo);
+    color: #141414;
+    line-height: 25px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.modalContainer {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    padding: 5px;
+    width: 40%;
+    height: 50%;
+    background: #292929;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+    transition: transform 1s;
+    transform: translateY(0);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modalTexto {
+    color: #aaaaaa;
+}
+
+.modalCerrar {
+    transform: translateY(-200%)
+}
+
+.modal img {
+    margin: auto;
+    height: 50%;
+}
+
+.valoracion i {
+    color: var(--amarillo);
+    padding: 5px 0px;
+}
+
+/*--------------Login Modal-------------*/
+
+.loginCerrar {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: #E5491E;
+    line-height: 25px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.loginModalContainer {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginModal {
+    padding: 5px;
+    width: 30%;
+    height: 60%;
+    background: #292929;
+    position: relative;
+    transition: transform 1s;
+    transform: translateY(0);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.loginModalCerrar {
+    transform: translateY(-200%)
+}
+
+.tituloForm {
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+}
+  
+.formularioPrincipal {
+    padding-top: 70px;
+    width: 100%;
+    height: 100%;
+    background: none;
+}
+  
+.formularioPrincipal .grupo {
+    color: white;
+    padding-top: 10px;
+    position: relative;
+    margin: 45px;
+}
+  
+input, textarea {
+    background: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--colorTextos);
+    resize: none;
+}
+  
+input:focus, textarea:focus {
+    outline: none;
+    color: white;
+}
+  
+input:focus ~ label,
+input:valid ~ label,
+textarea:focus ~ label, textarea:valid ~ label {
+    position: absolute;
+    top: -14px;
+    font-size: 12px;
+    color: #c5c1b2;
+}
+  
+label {
+    color: var(--colorTextos);
+    font-size: 16px;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    transition: 0.5s ease all;
+    pointer-events: none;
+}
+  
+input:focus ~ .barra::before, textarea:focus ~ .barra::before {
+    width: 100%;
+}
+  
+.barra {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+  
+.barra::before {
+    content: "";
+    height: 2px;
+    width: 0%;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(to right, #999711, #f1d42b);
+    transition: 0.3s ease all;
+    left: 0%;
+}
+  
+.botonForm {
+    background: var(--amarillo);
+    display: block;
+    width: 100px;
+    height: 40px;
+    border: none;
+    color: rgb(61, 61, 61);
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 100px auto 0px auto;
+    cursor: pointer;
+}
+
+/*---------------Sección Peliculas------------*/
+
+.movieApp {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.tituloMovieSearch {
+    color: #888;
+    font-size: 37px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.tituloMovieSearch:hover{
+    color: #535353;
+}
+
+.cajaSearch {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.search {
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    background-color: #F3F3F3;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    border-radius: 8px;
+    color: #313131;
+    font-size: 20px;
+    transition: 0.4s;
+}
+
+::placeholder {
+    color: #aaa;
+}
+
+.search:focus {
+    color: #fff;
+    background-color: #313131;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
+}
+
+main{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.movie {
+    width: 300px;
+    margin: 1rem;
+    border-radius: 3px;
+    box-shadow: 0.2px 4px 5px rgba(0,0,0,0.1);
+    background-color: var(--secondary-color);
+    position:relative;
+    overflow: hidden;
+}
+
+.movie img{
+    width:100%;
+}
+
+.movie-info{
+    color:#eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 1rem;
+    letter-spacing: 0.5px;
+}
+
+body.dark .movie-info{
+    color: gray;
+}
+
+.movie-info h3{
+    margin-top: 0;
+}
+
+.movie-info span{
+    background-color: var(--primary-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.movie-info span.green{
+    color:lightgreen;
+}
+
+.movie-info span.orange{
+    color:orange;
+}
+
+.movie-info span.red{
+    color:red;
+}
+
+.sinopsis{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: #fff;
+    padding: 1rem;
+    max-height: 100%;
+    transform:translateY(101%);
+    transition:transform 0.3s ease-in;
+}
+
+.movie:hover .sinopsis{
+    transform:translateY(0)
+}
+
+#tags{
+    width:80%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+}
+
+.tag{
+    color:rgb(66, 66, 66);
+    padding:10px 20px;
+    background-color: var(--amarillo);
+    border-radius: 50px;
+    margin:5px;
+    display:inline-block;
+    cursor: pointer;
+}
+
+.tag.highlight{
+    background-color: rgb(243, 139, 20);
+}
+
+.no-results {
+    color: rgb(99, 99, 99);
+}
+
+.pagination {
+    display: flex;
+    margin: 10px 30px;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+}
+
+.page {
+    padding: 20px;
+    cursor: pointer;
+}
+
+.page.disabled {
+    cursor: not-allowed;
+    color: gray;
+}
+
+.current {
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 5px solid orange;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.know-more {
+    background-color: orange;
+    color: white;
+    font: 16px;
+    font-weight: 400;
+    font-weight: bold;
+    border: 0;
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin-top: 15px;
+}
+
+
+.overlay {
+    
+    height: 100%;
+    width: 0;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0, 0.9); 
+    overflow-x: hidden; 
+    transition: 0.5s; 
+}
+  
+ 
+.overlay-content {
+    position: relative;
+    top: 10%; 
+    width: 100%;
+    text-align: center; 
+    margin-top: 30px; 
+}
+  
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block; 
+    transition: 0.3s; 
+}
+  
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+.embed.hide{
+    display: none;
+}
+
+.embed.show{
+    display: inline-block;
+}
+
+.arrow{
+    position: absolute;
+    font-size: 40px;
+}
+
+.arrow.left-arrow{
+    top:50%;
+    left:5%;
+    transform: translateY(-50%);
+}
+
+
+.arrow.right-arrow{
+  top:50%;
+  transform: translateY(-50%);
+  right:5%;
+}
+
+.dots{
+  margin-top: 30px;
+}
+
+.dots .dot {
+  padding: 5px 15px;
+  border-radius: 50%;
+  border: 5px solid rgb(110, 9, 226);
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 5px;
+}
+
+.dots .dot.active{
+  border-color: rgb(230, 189, 11);
+}
